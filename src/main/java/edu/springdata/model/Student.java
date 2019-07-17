@@ -3,7 +3,7 @@ package edu.springdata.model;
 public class Student {
     private  int id;
     private String name;
-    private String location;
+    private String code;
 
     public int getId() {
         return id;
@@ -21,25 +21,30 @@ public class Student {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
+    public String getCode() {
+        return code;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public Student(int id, String name, String location) {
+    public Student(int id, String name, String code) {
         this.id = id;
         this.name = name;
-        this.location = location;
+        this.code = code;
     }
 
-    public Student(String name, String location) {
+    public Student(String name, String code) {
         this.name = name;
-        this.location = location;
+        this.code = code;
     }
 
     public Student() {
+    }
+
+    @Override
+    public String toString() {
+        return id + " " + name + " " + code;
     }
 }
