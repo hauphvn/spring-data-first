@@ -3,12 +3,14 @@ package edu.springdata.dao;
 import edu.springdata.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class StudentJdbcTemplateDao {
@@ -64,6 +66,12 @@ public class StudentJdbcTemplateDao {
         return result;
     }
 
+    //Su dung Rowmapper de lay du lieu map voi 1 object trong java
+    // su dung class StudentMapper ben duoi
+    public Student getStudentById(int id){
+        String query = "select * from Student where id = ?";
+        return jdbcTemplate.queryForObject(query, new Integer[]{id}, new StudentMapper());
+    }
 
     public List<Student> getAllStudent(){
         createConnection();
@@ -112,6 +120,14 @@ public class StudentJdbcTemplateDao {
             }
         }catch (Exception e){
             System.out.println(e.toString());
+        }
+    }
+
+    private static final class StudentMapper implements RowMapper<Student>{
+
+        @Override
+        public Student mapRow(ResultSet resultSet, int i) throws SQLException {
+            return new Student(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("code"));
         }
     }
 
