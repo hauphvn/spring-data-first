@@ -1,0 +1,13 @@
+Cai dat dataSource de su dung lai tu nhieu DAO
+1. Can tai jdbc maven trong pom
+2. Them vao bean trong context.xml voi name = dataSource....
+         <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+                <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/educatio"/>
+         </bean>
+
+3.Vao class java chua temple DAO
+
+-------Jdbc template-----------
+Datasource da giup code ngan hon
+Nhung de statment... ngan gon hon, ta su dung jdbc template
