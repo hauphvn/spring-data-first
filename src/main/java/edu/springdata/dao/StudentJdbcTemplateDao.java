@@ -74,6 +74,12 @@ public class StudentJdbcTemplateDao {
     }
 
     public List<Student> getAllStudent(){
+        String query = "select * from Student";
+        return jdbcTemplate.query(query, new StudentMapper());
+    }
+
+    //Khong su dung jdbc template and rowmapper
+  /*  public List<Student> getAllStudent(){
         createConnection();
         List<Student> studentList = new ArrayList<Student>();
         try {
@@ -94,7 +100,9 @@ public class StudentJdbcTemplateDao {
         shutDown();
         return studentList;
 
-    }
+    }*/
+
+
 
     private void createConnection(){
         if (connection == null){
