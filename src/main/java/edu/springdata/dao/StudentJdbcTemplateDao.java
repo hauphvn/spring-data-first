@@ -15,19 +15,22 @@ public class StudentJdbcTemplateDao {
     private Connection connection = null;
     private Statement statement = null;
 
-    @Autowired
+
     private DataSource dataSource;
-    private JdbcTemplate jdbcTemplate = new JdbcTemplate();
+    private JdbcTemplate jdbcTemplate;
 
     public DataSource getDataSource() {
         return dataSource;
     }
-
+    @Autowired
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+        jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public void insertStudent(Student student){
+    //Khong su dung jdbc template
+
+    /*public void insertStudent(Student student){
         createConnection();
         try {
             statement = connection.createStatement();
@@ -38,7 +41,29 @@ public class StudentJdbcTemplateDao {
             System.out.println(e.toString());
         }
         shutDown();
+    }*/
+
+    //Su dung jdbc template
+    public void insertStudent(Student student){
+        String query = "insert into Student(id, code, name) values (" +
+                ""+student.getId()+",'" + student.getCode()+"','"+student.getName()+"')";
+        jdbcTemplate.execute(query);
+        shutDown();
     }
+
+    public void deleteStudent(int id){
+        String query = "delete from Student where id = " + id;
+        jdbcTemplate.execute(query);
+        shutDown();
+    }
+
+    public int countStudent(){
+        String query = "select count(*) from Student";
+        int result = jdbcTemplate.queryForObject(query, Integer.class);
+        shutDown();
+        return result;
+    }
+
 
     public List<Student> getAllStudent(){
         createConnection();
