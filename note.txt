@@ -16,3 +16,21 @@ Nhung de statment... ngan gon hon, ta su dung jdbc template
 -------Jdbc DAO support------------
 Khong can tu tao connection voi jdbc template, se cho spring lam
 chi can extend class JdbcDaoSupport
+
+-----Spring with Hibernate--------
+1. Add srping orm and hibernate-core into pom file
+2. In context.xml
+<bean name="sessionFactory"
+    class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        //Dung de cho bean biet noi ma chung se scan, thuong la noi luu tru model
+        <property name="packagesToScan" value="edu.springdata.model"/>
+        <property name="hibernateProperties">
+                    <props>
+                        <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                        <prop key="show_sql">true</prop>
+                        <prop key="hibernate.hbm2ddl.auto">create</prop>
+                    </props>
+                </property>
+    </bean>
+
