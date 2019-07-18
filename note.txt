@@ -11,3 +11,8 @@ Cai dat dataSource de su dung lai tu nhieu DAO
 -------Jdbc template-----------
 Datasource da giup code ngan hon
 Nhung de statment... ngan gon hon, ta su dung jdbc template
+
+
+-------Jdbc DAO support------------
+Khong can tu tao connection voi jdbc template, se cho spring lam
+chi can extend class JdbcDaoSupport
