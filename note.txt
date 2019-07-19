@@ -33,4 +33,6 @@ chi can extend class JdbcDaoSupport
                     </props>
                 </property>
     </bean>
+3. In class java model
+Khai bao @Entity, @Id....
 
