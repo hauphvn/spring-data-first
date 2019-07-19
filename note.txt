@@ -36,3 +36,41 @@ chi can extend class JdbcDaoSupport
 3. In class java model
 Khai bao @Entity, @Id....
 
+--------------Spring data with JPA------------
+JPA van phai can mot JPA provider nhu Hibernate de cau hinh
+Trong JPA co concept Repository Interfaces
+Nhu phan truoc ta co de cap den @Repository, tu la no se qui dinh class nao la Repository
+Trong Spring data JPA chung ta ko can lam viec do
+Repository Interfaces se mapping voi mot class Entity cu the
+Cac Repository Interfaces se thuc hien CRUD nhu thong thuong.
+Tuy nhien co them tinh nang vuot troi:
+Query DSL: domain syntax language
+Query Method:
+
+1. Add dependency:
+Spring data jpa
+Hibernate data manager
+2. Configuration
+In context.xml:
+Add schema: xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+<jpa:repositories base-package="edu.springdata.repository"/>
+package nay se defined ra cac repository co trong package nay
+
+Khai nao entity manager
+
+<bean name="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="edu.springdata.model"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+</bean>
+
+ <bean name="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+ </bean>
+
+ De lam viec thuan tien tren transaction, can add them schema:
+ xmlns:tx="http://www.springframework.org/schema/tx"
+    <tx:annotation-driven/> // NO se enable cac annotation configuration lien quan den
+    transaction
