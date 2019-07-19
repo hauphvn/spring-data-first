@@ -81,3 +81,31 @@ Khai nao entity manager
  xmlns:tx="http://www.springframework.org/schema/tx"
     <tx:annotation-driven/> // NO se enable cac annotation configuration lien quan den
     transaction
+
+
+
+---------CRUD Repository vs Jpa Repository
+
+CrudRepository la Interface Parent
+JpaRepository la Interface Child
+Giua chung con co mot interface khac la: PagingAndSortingRepository
+Co nghia la: JpaRepository co all method cua CrudRepository and PagingAndSortingRepository
+
+//Following chung ta dang ke thua JpaRepository
+public interface ObjectEduRepository extends JpaRepository<ObjectEdu, Integer> {
+    ObjectEdu findByName(String name);
+
+    @Query("from ObjectEdu")
+    List<ObjectEdu> getAllObjectHauphn();
+}
+
+//Dang ke thua CrudRepository
+public interface ObjectEduRepository extends CrudRepository<ObjectEdu, Integer> {
+    ObjectEdu findByName(String name);
+
+    @Query("from ObjectEdu")
+    List<ObjectEdu> getAllObjectHauphn();
+}
+
+
+***Chu y: parameter: Integer la Id cua Entity trong class java
