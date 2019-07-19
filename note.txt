@@ -47,6 +47,12 @@ Tuy nhien co them tinh nang vuot troi:
 Query DSL: domain syntax language
 Query Method: chung ta se su dung nhung ham co san:
 save(), count(), getAll()....
+Query Method da chuan bi san rat nhieu cau query
+findByNameOr.... tuy thuoc vao property hien hu trong java class model
+
+---Chung ta co the su dung @Query de tu viet cau query theo y muon
+Ref: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods
+
 
 1. Add dependency:
 Spring data jpa

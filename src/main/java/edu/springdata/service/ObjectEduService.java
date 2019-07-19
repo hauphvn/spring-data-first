@@ -28,8 +28,10 @@ public class ObjectEduService {
     }
 
     public void test(){
-        System.out.println(objectEduRepository.count());
-        System.out.println(objectEduRepository.findAll());
+//        System.out.println(objectEduRepository.count());
+//        System.out.println(objectEduRepository.findAll());
+//        System.out.println(objectEduRepository.findByName("Math"));
+        System.out.println(objectEduRepository.getAllObjectHauphn());
     }
 
 }

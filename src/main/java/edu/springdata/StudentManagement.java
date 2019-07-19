@@ -21,6 +21,7 @@ public class StudentManagement {
         ObjectEduService objectEduService = context.getBean("objectEduService", ObjectEduService.class);
 //        objectEduService.save(new ObjectEdu("Physical"));
 //        objectEduService.save(new ObjectEdu("Math"));
+
         objectEduService.test();
 
     }
