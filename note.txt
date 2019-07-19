@@ -45,7 +45,8 @@ Repository Interfaces se mapping voi mot class Entity cu the
 Cac Repository Interfaces se thuc hien CRUD nhu thong thuong.
 Tuy nhien co them tinh nang vuot troi:
 Query DSL: domain syntax language
-Query Method:
+Query Method: chung ta se su dung nhung ham co san:
+save(), count(), getAll()....
 
 1. Add dependency:
 Spring data jpa

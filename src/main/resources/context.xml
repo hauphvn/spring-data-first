@@ -12,11 +12,11 @@
         http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="edu.springdata.dao"/>
-    //Configuration JPA
+    <context:component-scan base-package="edu.springdata.dao, edu.springdata.service"/>
+<!--    //Configuration JPA-->
     <jpa:repositories base-package="edu.springdata.repository"/>
 
-    //Khai bao entity manager jpa
+<!--    //Khai bao entity manager jpa-->
     <bean name="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="edu.springdata.model"/>
@@ -30,7 +30,7 @@
     </bean>
 
     <tx:annotation-driven/>
-    //Ket thuc entity manager jpa
+<!--    //Ket thuc entity manager jpa-->
 
     <bean name="studentJdbcDaoSupport" class="edu.springdata.dao.StudentJdbcDaoSupport">
         <property name="dataSource" ref="dataSource"/>
@@ -51,7 +51,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+<!--                <prop key="hibernate.hbm2ddl.auto">create</prop>-->
             </props>
         </property>
     </bean>
